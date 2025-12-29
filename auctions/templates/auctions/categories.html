@@ -1,0 +1,21 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+    All Categories
+{% endblock %}
+
+{% block body %}
+    <h2>All Categories</h2>
+
+    <div class="list-group">
+        {% for category in categories %}
+            <a href="{% url 'category_listing' category.categoryName %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                {{ category.categoryName }}
+                <span class="badge bg-primary rounded-pill">{{ category.listing.count }}</span>
+            </a>
+        {% empty %}
+            <p class="list-group-item">No categories have been created yet.</p>
+        {% endfor %}
+    </div>
+
+{% endblock %}
